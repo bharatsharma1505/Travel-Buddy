@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Namaste Gaon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.6.0/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.6.0/firebaseui.css" />
+    <script src="https://www.gstatic.com/firebasejs/5.10/firebase.js"></script>
+     <script>
+    var firebaseConfig = {
+    
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    </script>
+    <script type="text/javascript">
+          var uiConfig = {
+          signInSuccessUrl: '<url-to-redirect-to-on-success>',
+          signInOptions: [
+          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+          ],
+          tosUrl: 'https://www.namastegaon.in/p/privacy-policy.html',
+          privacyPolicyUrl: function() {
+          window.location.assign('https://www.namastegaon.in/p/privacy-policy.html');
+          }
+          };
+
+      // Initialize the FirebaseUI Widget using Firebase.
+      var ui = new firebaseui.auth.AuthUI(firebase.auth());
+      // The start method will wait until the DOM is loaded.
+      ui.start('#firebaseui-auth-container', uiConfig);
+
+
+      var handleSignedOutUser = function() {
+        console.log("sign in");
+      };
+
+
+      var handleSignedInUser = function(user) {
+        console.log("signed out")
+      };
+    </script>
+  </head>
+  <body>
+    <!-- The surrounding HTML is left untouched by FirebaseUI.
+         Your app may use that space for branding, controls and other customizations.-->
+    <div id="firebaseui-auth-container"></div>
+  </body>
+</html
